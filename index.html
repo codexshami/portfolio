@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mohd Shami – B.Tech Data Science at TMU, Moradabad. ML Engineer & Data Scientist building real AI products. Explore my projects, internships & certifications." />
+  <title>Mohd Shami | Data Scientist & ML Engineer</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS – Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== PRELOADER ========== -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">MS</div>
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
+      <p class="preloader-text">Loading Portfolio...</p>
+    </div>
+  </div>
+
+  <!-- ========== CURSOR GLOW ========== -->
+  <div id="cursor-glow"></div>
+  <div id="cursor-dot"></div>
+
+  <!-- ========== FLOATING NAVIGATION ========== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">MS<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
+        <!-- Resume Download -->
+        <a href="#" class="btn-resume" download>
+          <i class="fas fa-download"></i> Resume
+        </a>
+        <!-- Mobile menu hamburger -->
+        <button id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="hero">
+    <!-- Three.js canvas injected here by script.js -->
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="hero-content">
+      <!-- Profile photo placeholder -->
+      <div class="hero-photo-wrap">
+        <img
+          src="https://api.dicebear.com/8.x/avataaars/svg?seed=MohdShami&backgroundColor=0a0a0a"
+          alt="Mohd Shami"
+          class="hero-photo"
+          id="hero-photo"
+        />
+      </div>
+
+      <div class="hero-text">
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-name">Mohd Shami</h1>
+        <p class="hero-tagline">
+          <span class="typing-prefix">I'm a&nbsp;</span>
+          <span id="typed-text" class="typed-text"></span>
+          <span class="typed-cursor">|</span>
+        </p>
+        <p class="hero-desc">
+          Turning data into decisions & ideas into AI-powered realities.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="#contact" class="btn-outline">Get In Touch</a>
+        </div>
+
+        <!-- Social quick links -->
+        <div class="hero-socials">
+          <a href="https://github.com/codexshami" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/codexshami" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:shami.048458@tmu.ac.in" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://codexshami.github.io" target="_blank" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">About <span class="accent">Me</span></h2>
+      <div class="about-grid">
+        <!-- Left: card with intro -->
+        <div class="about-card glass" data-aos="fade-right">
+          <p class="about-intro">
+            👋 Hi! I'm <strong>Mohd Shami</strong>, a B.Tech <strong>Data Science</strong> student at
+            Teerthanker Mahaveer University, Moradabad (CGPA 8.5). I'm passionate about
+            building intelligent systems that turn raw data into real decisions.
+          </p>
+          <p class="about-intro">
+            From predicting diseases with 85% accuracy using XGBoost to classifying
+            spam emails with 98%+ precision, I love engineering end-to-end ML pipelines
+            that ship as real products. I've also completed two professional data internships
+            and ranked 1st in my class.
+          </p>
+          <div class="about-tags">
+            <span class="tag">🎓 TMU Moradabad · CGPA 8.5</span>
+            <span class="tag">📊 Data Scientist</span>
+            <span class="tag">🤖 ML Engineer</span>
+            <span class="tag">🏆 1st Rank in Class</span>
+          </div>
+        </div>
+
+        <!-- Right: skill chips -->
+        <div class="about-skills-wrap" data-aos="fade-left">
+          <h3 class="about-skills-title">Core Skills</h3>
+          <div class="skill-chips">
+            <div class="chip"><i class="fab fa-python"></i> Python</div>
+            <div class="chip"><i class="fas fa-code"></i> R &amp; SQL</div>
+            <div class="chip"><i class="fas fa-brain"></i> TensorFlow &amp; PyTorch</div>
+            <div class="chip"><i class="fas fa-rocket"></i> XGBoost &amp; Scikit-learn</div>
+            <div class="chip"><i class="fas fa-table"></i> Pandas &amp; NumPy</div>
+            <div class="chip"><i class="fas fa-chart-bar"></i> Power BI &amp; Tableau</div>
+            <div class="chip"><i class="fas fa-file-excel"></i> Excel</div>
+            <div class="chip"><i class="fas fa-cube"></i> Docker &amp; GitHub</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS SECTION ========== -->
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">My <span class="accent">Projects</span></h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        A selection of things I've built, analysed and explored.
+      </p>
+
+      <div clas        <!-- Project 1: Revive -->
+        <div class="project-card glass" data-aos="fade-up" data-aos-delay="0">
+          <div class="project-img-wrap">
+            <img src="https://placehold.co/600x340/000814/0078ff?text=Revive+%E2%80%93+Disease+Prediction&font=outfit" alt="Revive" class="project-img" />
+            <div class="project-overlay">
+              <a href="https://github.com/codexshami/Revive" target="_blank" class="overlay-icon"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag">Python · Flask · XGBoost · Bootstrap · ML</span>
+            <h3 class="project-title">Revive – ML Disease Prediction Web App</h3>
+            <p class="project-desc">
+              Improved diagnosis accuracy from 72% → <strong>85%</strong> using XGBoost, reducing error by 18%.
+              Full-stack Flask web app delivering predictions via a clean UI.
+            </p>
+            <a href="https://github.com/codexshami/Revive" target="_blank" class="btn-ghost">
+              <i class="fab fa-github"></i> codexshami/Revive
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: ChurnShield AI -->
+        <div class="project-card glass" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-img-wrap">
+            <img src="https://placehold.co/600x340/000814/00ff88?text=ChurnShield+AI&font=outfit" alt="ChurnShield AI" class="project-img" />
+            <div class="project-overlay">
+              <a href="https://github.com/codexshami/ChurnShield_AI" target="_blank" class="overlay-icon"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag">XGBoost · Random Forest · Logistic Regression · Streamlit</span>
+            <h3 class="project-title">ChurnShield AI – Churn Prediction</h3>
+            <p class="project-desc">
+              End-to-end customer churn prediction product. User → Web App → API → ML Pipeline → Model → Response.
+              Ensemble of XGBoost, Random Forest &amp; Logistic Regression.
+            </p>
+            <a href="https://github.com/codexshami/ChurnShield_AI" target="_blank" class="btn-ghost">
+              <i class="fab fa-github"></i> codexshami/ChurnShield_AI
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: HamOrSpam -->
+        <div class="project-card glass" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-img-wrap">
+            <img src="https://placehold.co/600x340/000814/40a0ff?text=HamOrSpam+Classifier&font=outfit" alt="HamOrSpam Classifier" class="project-img" />
+            <div class="project-overlay">
+              <a href="https://github.com/codexshami/HamOrSpam-Classifier" target="_blank" class="overlay-icon"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag">NLP · TF-IDF · SMOTE · Logistic Regression</span>
+            <h3 class="project-title">HamOrSpam – Email Spam Classifier</h3>
+            <p class="project-desc">
+              Email protection system that classifies spam with <strong>98%+</strong> accuracy using TF-IDF vectorization,
+              SMOTE class balancing, and NLP preprocessing.
+            </p>
+            <a href="https://github.com/codexshami/HamOrSpam-Classifier" target="_blank" class="btn-ghost">
+              <i class="fab fa-github"></i> codexshami/HamOrSpam-Classifier
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4: FarmAIQ -->
+        <div class="project-card glass" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-img-wrap">
+            <img src="https://placehold.co/600x340/000814/00cc66?text=FarmAIQ+%E2%80%93+Smart+Agriculture&font=outfit" alt="FarmAIQ" class="project-img" />
+            <div class="project-overlay">
+              <a href="https://github.com/codexshami/FarmAIQ" target="_blank" class="overlay-icon"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag">Random Forest · CNN · Streamlit · Python · Kaggle</span>
+            <h3 class="project-title">FarmAIQ – Smart Agriculture AI</h3>
+            <p class="project-desc">
+              ML-based crop &amp; agriculture recommendation system with <strong>93%</strong> accuracy.
+              Combines Random Forest and CNN for crop decision support, served via Streamlit.
+            </p>
+            <a href="https://github.com/codexshami/FarmAIQ" target="_blank" class="btn-ghost">
+              <i class="fab fa-github"></i> codexshami/FarmAIQ
+            </a>
+          </div>
+        </div>       </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WORK EXPERIENCE SECTION ========== -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Work <span class="accent">Experience</span></h2>
+      <div class="timeline">
+
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass">
+            <span class="timeline-date">Aug 2025 – Oct 2025</span>
+            <h3>Data Science Intern</h3>
+            <p class="company"><i class="fas fa-building"></i> Codec Technologies India</p>
+            <p>Implemented data-driven healthcare analysis solutions. Built predictive models for medical diagnosis achieving <strong>85% accuracy</strong> using Python and ML pipelines.</p>
+            <div class="timeline-tags">
+              <span class="tag">Python</span><span class="tag">ML</span><span class="tag">Healthcare AI</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass">
+            <span class="timeline-date">June 2025 – Aug 2025</span>
+            <h3>Data Analyst Intern</h3>
+            <p class="company"><i class="fas fa-chart-line"></i> Future Intern Pvt Ltd</p>
+            <p>Performed comprehensive data analysis using Pandas and NumPy. Developed Python scripts for data cleaning, preprocessing and statistical reporting pipelines.</p>
+            <div class="timeline-tags">
+              <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Python</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass">
+            <span class="timeline-date">June 2023 – Aug 2027</span>
+            <h3>B.Tech – Data Science</h3>
+            <p class="company"><i class="fas fa-university"></i> Teerthanker Mahaveer University, Moradabad, UP</p>
+            <p>CGPA 8.5. Ranked <strong>1st in class</strong> for academic excellence. Cleared college-level round of Smart India Hackathon (SIH) and advanced to next stage. Earned 2 GitHub achievement badges for active contributions.</p>
+            <div class="timeline-tags">
+              <span class="tag">CGPA 8.5</span><span class="tag">1st Rank</span><span class="tag">SIH 2025</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CERTIFICATES / ACHIEVEMENTS SECTION ========== -->
+  <section id="certificates" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Achievements &amp; <span class="accent">Certificates</span></h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Milestones that mark my learning journey.</p>
+
+      <div class="cert-grid">
+
+        <div class="cert-card glass" data-aos="zoom-in" data-aos-delay="0">
+          <div class="cert-img-wrap">
+            <img src="https://placehold.co/400x280/000814/0078ff?text=IBM+Data+Analysis&font=outfit" alt="IBM" class="cert-img" />
+            <div class="cert-badge"><i class="fas fa-certificate"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>IBM – Data Analysis &amp; Planning</h4>
+            <p>Problem Framing, Data Analysis Planning &amp; Getting Started with Data. Issued by IBM (2026).</p>
+          </div>
+        </div>
+
+        <div class="cert-card glass" data-aos="zoom-in" data-aos-delay="100">
+          <div class="cert-img-wrap">
+            <img src="https://placehold.co/400x280/000814/40a0ff?text=Deep+Learning+%26+ML&font=outfit" alt="Simplilearn" class="cert-img" />
+            <div class="cert-badge"><i class="fas fa-brain"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Deep Learning &amp; ML with Python</h4>
+            <p>Comprehensive Deep Learning and Machine Learning using Python. Issued by Simplilearn (2025).</p>
+          </div>
+        </div>
+
+        <div class="cert-card glass" data-aos="zoom-in" data-aos-delay="200">
+          <div class="cert-img-wrap">
+            <img src="https://placehold.co/400x280/000814/00ff88?text=HackerRank+Certified&font=outfit" alt="HackerRank" class="cert-img" />
+            <div class="cert-badge"><i class="fas fa-code"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>HackerRank – Python, SQL &amp; Problem Solving</h4>
+            <p>Certified in Python, SQL and Problem Solving skills. Issued by HackerRank (2025).</p>
+          </div>
+        </div>
+
+        <div class="cert-card glass" data-aos="zoom-in" data-aos-delay="300">
+          <div class="cert-img-wrap">
+            <img src="https://placehold.co/400x280/000814/00cfff?text=Advanced+Data+Analysis&font=outfit" alt="ITM EdTech" class="cert-img" />
+            <div class="cert-badge"><i class="fas fa-chart-pie"></i></div>
+          </div>
+          <div class="cert-body">
+            <h4>Advanced Data Analysis – Excel &amp; Power BI</h4>
+            <p>Advanced Excel &amp; Power BI data analysis and dashboard building. Issued by ITM EdTech (2025).</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS SECTION ========== -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">My <span class="accent">Skills</span></h2>
+
+      <div class="skills-layout">
+        <!-- Progress bars -->
+        <div class="skills-bars" data-aos="fade-right">
+          <h3 class="skills-cat">Technical Proficiency</h3>
+
+          <div class="skill-bar-group">
+            <div class="skill-bar-label"><span>Python</span><span class="pct">88%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88" style="--clr:#0078ff"></div></div>
+          </div>
+
+          <div class="skill-bar-group">
+            <div class="skill-bar-label"><span>Pandas &amp; NumPy</span><span class="pct">82%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82" style="--clr:#00cfff"></div></div>
+          </div>
+
+          <div class="skill-bar-group">
+            <div class="skill-bar-label"><span>Machine Learning</span><span class="pct">75%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75" style="--clr:#00ff88"></div></div>
+          </div>
+
+          <div class="skill-bar-group">
+            <div class="skill-bar-label"><span>Power BI</span><span class="pct">85%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85" style="--clr:#40a0ff"></div></div>
+          </div>
+
+          <div class="skill-bar-group">
+            <div class="skill-bar-label"><span>Excel</span><span class="pct">90%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90" style="--clr:#00cc66"></div></div>
+          </div>
+
+          <div class="skill-bar-group">
+            <div class="skill-bar-label"><span>Web Development</span><span class="pct">70%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70" style="--clr:#0055cc"></div></div>
+          </div>
+
+          <div class="skill-bar-group">
+            <div class="skill-bar-label"><span>Computer Vision</span><span class="pct">68%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="68" style="--clr:#00aa55"></div></div>
+          </div>
+        </div>
+
+        <!-- Circular charts (SVG-based) -->
+        <div class="skills-circles" data-aos="fade-left">
+          <h3 class="skills-cat">Tool Expertise</h3>
+          <div class="circles-grid">
+            <div class="circle-stat">
+              <svg viewBox="0 0 120 120" class="ring-svg">
+                <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                <circle class="ring-fill" cx="60" cy="60" r="50" data-pct="88" style="stroke:#0078ff"/>
+              </svg>
+              <div class="circle-label">Python<br/><strong>88%</strong></div>
+            </div>
+            <div class="circle-stat">
+              <svg viewBox="0 0 120 120" class="ring-svg">
+                <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                <circle class="ring-fill" cx="60" cy="60" r="50" data-pct="85" style="stroke:#40a0ff"/>
+              </svg>
+              <div class="circle-label">Power BI<br/><strong>85%</strong></div>
+            </div>
+            <div class="circle-stat">
+              <svg viewBox="0 0 120 120" class="ring-svg">
+                <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                <circle class="ring-fill" cx="60" cy="60" r="50" data-pct="75" style="stroke:#00cfff"/>
+              </svg>
+              <div class="circle-label">ML<br/><strong>75%</strong></div>
+            </div>
+            <div class="circle-stat">
+              <svg viewBox="0 0 120 120" class="ring-svg">
+                <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                <circle class="ring-fill" cx="60" cy="60" r="50" data-pct="90" style="stroke:#00ff88"/>
+              </svg>
+              <div class="circle-label">Excel<br/><strong>90%</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Get In <span class="accent">Touch</span></h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        Whether it's a project, a collaboration, or just a hello — I'd love to hear from you!
+      </p>
+
+      <div class="contact-layout">
+        <!-- Contact form -->
+        <form id="contact-form" class="contact-form glass" data-aos="fade-right">
+          <div class="form-group">
+            <label for="c-name">Your Name</label>
+            <input type="text" id="c-name" placeholder="Mohd Shami" required />
+          </div>
+          <div class="form-group">
+            <label for="c-email">Email Address</label>
+            <input type="email" id="c-email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="c-msg">Message</label>
+            <textarea id="c-msg" rows="5" placeholder="Tell me about your project…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          <p id="form-success" class="form-success" aria-live="polite"></p>
+        </form>
+
+        <!-- Contact info -->
+        <div class="contact-info" data-aos="fade-left">
+          <div class="contact-card glass">
+            <i class="fas fa-envelope contact-icon"></i>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:shami.048458@tmu.ac.in">shami.048458@tmu.ac.in</a>
+            </div>
+          </div>
+          <div class="contact-card glass">
+            <i class="fas fa-phone contact-icon"></i>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+918923591576">+91 8923591576</a>
+            </div>
+          </div>
+          <div class="contact-card glass">
+            <i class="fab fa-github contact-icon"></i>
+            <div>
+              <h4>GitHub</h4>
+              <a href="https://github.com/codexshami" target="_blank">github.com/codexshami</a>
+            </div>
+          </div>
+          <div class="contact-card glass">
+            <i class="fab fa-linkedin-in contact-icon"></i>
+            <div>
+              <h4>LinkedIn</h4>
+              <a href="https://linkedin.com/in/codexshami" target="_blank">linkedin.com/in/codexshami</a>
+            </div>
+          </div>
+
+          <!-- Social icons -->
+          <div class="contact-socials">
+            <a href="https://github.com/codexshami" target="_blank" aria-label="GitHub" class="social-btn"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/codexshami" target="_blank" aria-label="LinkedIn" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:shami.048458@tmu.ac.in" aria-label="Email" class="social-btn"><i class="fas fa-envelope"></i></a>
+            <a href="https://codexshami.github.io" target="_blank" aria-label="Portfolio" class="social-btn"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="footer">
+    <p>Designed &amp; Built by <span class="accent">Mohd Shami</span> &copy; 2026</p>
+    <p class="footer-sub">Made with <span class="heart">♥</span> and lots of ☕</p>
+  </footer>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
