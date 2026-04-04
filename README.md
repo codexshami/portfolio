@@ -1,4 +1,4 @@
-# 🚀 Mohd Shami – Personal Portfolio Website
+#  Mohd Shami – Personal Portfolio Website
 
 > **B.Tech Data Science | TMU Moradabad | Data Scientist & ML Engineer**
 
@@ -15,7 +15,7 @@ python -m http.server 8765
 ```
 → `http://localhost:8765`
 
-**Portfolio:** [codexshami.github.io](https://codexshami.github.io)
+**Portfolio:** [codexshami.github.io](https://codexshami.github.io/potfolio)
 
 ---
 
@@ -35,17 +35,17 @@ portfolio/
 
 | Feature | Description |
 |---|---|
-| 🎆 Three.js Hero | Multi-color particle field with animation |
-| ⌨️ Typing Effect | Cycles through 6 role titles |
-| 🔮 Glassmorphism | Frosted-glass cards on all sections |
-| 📜 Scroll Animations | AOS fade/zoom-in on every element |
-| 📊 Skill Bars | Animated progress bars + SVG ring charts |
-| 🌗 Theme Toggle | Dark ↔ Light mode (localStorage) |
-| 📱 Responsive | Mobile-first, hamburger nav |
-| ✨ Cursor Glow | Custom neon-glow cursor |
-| ⏳ Preloader | Animated logo on load |
-| 📧 Contact Form | Validation + success feedback |
-| 🔝 Back to Top | Auto-appears on scroll |
+|  Three.js Hero | Multi-color particle field with animation |
+|  Typing Effect | Cycles through 6 role titles |
+|  Glassmorphism | Frosted-glass cards on all sections |
+|  Scroll Animations | AOS fade/zoom-in on every element |
+|  Skill Bars | Animated progress bars + SVG ring charts |
+|  Theme Toggle | Dark ↔ Light mode (localStorage) |
+|  Responsive | Mobile-first, hamburger nav |
+|  Cursor Glow | Custom neon-glow cursor |
+|  Preloader | Animated logo on load |
+|  Contact Form | Validation + success feedback |
+|  Back to Top | Auto-appears on scroll |
 
 ---
 
@@ -90,11 +90,11 @@ portfolio/
 
 | | |
 |---|---|
-| 📧 Email | shami.048458@tmu.ac.in |
-| 📱 Phone | +91 8923591576 |
-| 🐙 GitHub | [github.com/codexshami](https://github.com/codexshami) |
-| 💼 LinkedIn | [linkedin.com/in/codexshami](https://linkedin.com/in/codexshami) |
-| 🌐 Portfolio | [codexshami.github.io](https://codexshami.github.io) |
+|  Email | shami.048458@tmu.ac.in |
+|  Phone | +91 8923591576 |
+|  GitHub | [github.com/codexshami](https://github.com/codexshami) |
+|  LinkedIn | [linkedin.com/in/codexshami](https://linkedin.com/in/codexshami) |
+|  Portfolio | [codexshami.github.io](https://codexshami.github.io) |
 
 ---
 
