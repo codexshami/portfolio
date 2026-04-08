@@ -90,7 +90,7 @@ portfolio/
 
 | | |
 |---|---|
-|  Email | shami.048458@tmu.ac.in |
+|  Email | codexshami@gmail.com |
 |  Phone | +91 8923591576 |
 |  GitHub | [github.com/codexshami](https://github.com/codexshami) |
 |  LinkedIn | [linkedin.com/in/codexshami](https://linkedin.com/in/codexshami) |
