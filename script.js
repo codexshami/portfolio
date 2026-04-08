@@ -1,11 +1,14 @@
 /**
  * script.js – Mohd Shami Portfolio
+ * White | Blue | Black – Professional 3D Theme
  * Features:
  *   - Preloader animation
  *   - Custom glow cursor
- *   - Three.js particle hero background
+ *   - Three.js 3D geometric hero background
  *   - Animated typing effect
  *   - AOS scroll animations
+ *   - Stat counter animation
+ *   - 3D card tilt effects
  *   - Skill bars + SVG ring chart animation (on scroll)
  *   - Smooth scrollbar highlight active nav
  *   - Dark / Light theme toggle
@@ -19,10 +22,8 @@
    ============================================================ */
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
-  // Give the fill animation (2 s) a moment to finish, then fade out
   setTimeout(() => {
     preloader.classList.add('hidden');
-    // Init everything only after preloader hides
     initAll();
   }, 2200);
 });
@@ -39,6 +40,8 @@ function initAll() {
   initRingCharts();
   initContactForm();
   initBackToTop();
+  initStatCounters();
+  init3DTiltCards();
 }
 
 /* ============================================================
@@ -47,18 +50,16 @@ function initAll() {
 function initCursor() {
   const glow = document.getElementById('cursor-glow');
   const dot  = document.getElementById('cursor-dot');
-  let mx = 0, my = 0; // mouse position
-  let gx = 0, gy = 0; // glow position (lags behind)
+  let mx = 0, my = 0;
+  let gx = 0, gy = 0;
 
   document.addEventListener('mousemove', (e) => {
     mx = e.clientX;
     my = e.clientY;
-    // Dot follows immediately
     dot.style.left = mx + 'px';
     dot.style.top  = my + 'px';
   });
 
-  // Smooth glow follows mouse with lerp
   function animateGlow() {
     gx += (mx - gx) * 0.08;
     gy += (my - gy) * 0.08;
@@ -68,31 +69,28 @@ function initCursor() {
   }
   animateGlow();
 
-  // Scale dot on links / buttons
-  const interactiveEls = document.querySelectorAll('a, button, input, textarea, .project-card, .cert-card');
+  const interactiveEls = document.querySelectorAll('a, button, input, textarea, .project-card, .cert-card, .stat-card, .chip');
   interactiveEls.forEach(el => {
     el.addEventListener('mouseenter', () => { dot.style.transform = 'translate(-50%,-50%) scale(2.5)'; });
     el.addEventListener('mouseleave', () => { dot.style.transform = 'translate(-50%,-50%) scale(1)'; });
   });
 
-  // Hide cursor when leaving window
   document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; dot.style.opacity = '0'; });
   document.addEventListener('mouseenter', () => { glow.style.opacity = '1'; dot.style.opacity = '1'; });
 }
 
 /* ============================================================
-   3. THREE.JS HERO BACKGROUND (Particles)
+   3. THREE.JS HERO BACKGROUND – 3D Network Geometry
    ============================================================ */
 function initThreeJS() {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas || typeof THREE === 'undefined') return;
 
-  // Scene setup
   const scene    = new THREE.Scene();
   const camera   = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 
-  camera.position.z = 5;
+  camera.position.z = 6;
 
   function resize() {
     const w = canvas.parentElement.clientWidth;
@@ -105,26 +103,27 @@ function initThreeJS() {
   resize();
   window.addEventListener('resize', resize);
 
-  /* ---- Particles ---- */
-  const PARTICLE_COUNT = 1800;
+  /* ---- Particles – Blue & White palette ---- */
+  const PARTICLE_COUNT = 2000;
   const positions = new Float32Array(PARTICLE_COUNT * 3);
   const colors    = new Float32Array(PARTICLE_COUNT * 3);
   const speeds    = new Float32Array(PARTICLE_COUNT);
 
-  // Color palette for particles
   const palette = [
-    new THREE.Color('#00f5ff'),
-    new THREE.Color('#bf00ff'),
-    new THREE.Color('#00ff88'),
-    new THREE.Color('#ffcc00'),
-    new THREE.Color('#ffffff'),
+    new THREE.Color('#3b82f6'),  // blue-500
+    new THREE.Color('#60a5fa'),  // blue-400
+    new THREE.Color('#93c5fd'),  // blue-300
+    new THREE.Color('#bfdbfe'),  // blue-200
+    new THREE.Color('#ffffff'),  // white
+    new THREE.Color('#1d4ed8'),  // blue-700
+    new THREE.Color('#2563eb'),  // blue-600
   ];
 
   for (let i = 0; i < PARTICLE_COUNT; i++) {
-    positions[i * 3]     = (Math.random() - 0.5) * 20;  // x
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 20;  // y
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 20;  // z
-    speeds[i]            = Math.random() * 0.012 + 0.003;
+    positions[i * 3]     = (Math.random() - 0.5) * 22;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 22;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 22;
+    speeds[i]            = Math.random() * 0.01 + 0.002;
 
     const col = palette[Math.floor(Math.random() * palette.length)];
     colors[i * 3]     = col.r;
@@ -137,30 +136,67 @@ function initThreeJS() {
   geo.setAttribute('color',    new THREE.BufferAttribute(colors,    3));
 
   const mat = new THREE.PointsMaterial({
-    size:         0.06,
+    size:         0.055,
     vertexColors: true,
     transparent:  true,
-    opacity:      0.85,
+    opacity:      0.8,
     depthWrite:   false,
   });
 
   const particles = new THREE.Points(geo, mat);
   scene.add(particles);
 
-  /* ---- Connecting lines (sparse) ---- */
+  /* ---- Connecting lines – blue network ---- */
   const lineGeo = new THREE.BufferGeometry();
   const lineVerts = [];
-  // Connect close-neighbour pairs for a network feel
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < 600; i++) {
     const ia = Math.floor(Math.random() * PARTICLE_COUNT) * 3;
     const ib = Math.floor(Math.random() * PARTICLE_COUNT) * 3;
-    lineVerts.push(positions[ia], positions[ia+1], positions[ia+2]);
-    lineVerts.push(positions[ib], positions[ib+1], positions[ib+2]);
+    const dx = positions[ia] - positions[ib];
+    const dy = positions[ia+1] - positions[ib+1];
+    const dz = positions[ia+2] - positions[ib+2];
+    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+    if (dist < 5) {
+      lineVerts.push(positions[ia], positions[ia+1], positions[ia+2]);
+      lineVerts.push(positions[ib], positions[ib+1], positions[ib+2]);
+    }
   }
   lineGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lineVerts), 3));
-  const lineMat = new THREE.LineBasicMaterial({ color: 0x00f5ff, transparent: true, opacity: 0.06 });
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.06 });
   const linesMesh = new THREE.LineSegments(lineGeo, lineMat);
   scene.add(linesMesh);
+
+  /* ---- Floating 3D Geometric shapes ---- */
+  const shapeGroup = new THREE.Group();
+  scene.add(shapeGroup);
+
+  // Wireframe icosahedron
+  const icoGeo = new THREE.IcosahedronGeometry(1.2, 1);
+  const icoMat = new THREE.MeshBasicMaterial({ color: 0x3b82f6, wireframe: true, transparent: true, opacity: 0.12 });
+  const ico = new THREE.Mesh(icoGeo, icoMat);
+  ico.position.set(4, 2, -3);
+  shapeGroup.add(ico);
+
+  // Wireframe octahedron
+  const octGeo = new THREE.OctahedronGeometry(0.8, 0);
+  const octMat = new THREE.MeshBasicMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: 0.1 });
+  const oct = new THREE.Mesh(octGeo, octMat);
+  oct.position.set(-4, -2, -2);
+  shapeGroup.add(oct);
+
+  // Wireframe torus
+  const torGeo = new THREE.TorusGeometry(0.7, 0.2, 12, 32);
+  const torMat = new THREE.MeshBasicMaterial({ color: 0x93c5fd, wireframe: true, transparent: true, opacity: 0.09 });
+  const tor = new THREE.Mesh(torGeo, torMat);
+  tor.position.set(-3, 3, -4);
+  shapeGroup.add(tor);
+
+  // Wireframe dodecahedron
+  const dodGeo = new THREE.DodecahedronGeometry(0.6, 0);
+  const dodMat = new THREE.MeshBasicMaterial({ color: 0x2563eb, wireframe: true, transparent: true, opacity: 0.1 });
+  const dod = new THREE.Mesh(dodGeo, dodMat);
+  dod.position.set(3, -3, -3);
+  shapeGroup.add(dod);
 
   /* ---- Mouse parallax ---- */
   let targetRotX = 0, targetRotY = 0;
@@ -175,22 +211,43 @@ function initThreeJS() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
-    // Drift particles upward slowly
+    // Drift particles upward
     const pos = particles.geometry.attributes.position.array;
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       pos[i * 3 + 1] += speeds[i];
-      if (pos[i * 3 + 1] > 10) pos[i * 3 + 1] = -10; // wrap
+      if (pos[i * 3 + 1] > 11) pos[i * 3 + 1] = -11;
     }
     particles.geometry.attributes.position.needsUpdate = true;
 
-    // Gentle rotation
+    // Gentle rotation following mouse
     particles.rotation.y += (targetRotY * 0.5 - particles.rotation.y) * 0.04;
     particles.rotation.x += (targetRotX * 0.3 - particles.rotation.x) * 0.04;
     linesMesh.rotation.y = particles.rotation.y;
     linesMesh.rotation.x = particles.rotation.x;
 
-    // Subtle auto-spin
-    particles.rotation.z = t * 0.02;
+    // Auto-spin
+    particles.rotation.z = t * 0.015;
+
+    // Animate geometric shapes
+    ico.rotation.x = t * 0.3;
+    ico.rotation.y = t * 0.2;
+    ico.position.y = 2 + Math.sin(t * 0.5) * 0.5;
+
+    oct.rotation.x = t * 0.4;
+    oct.rotation.z = t * 0.25;
+    oct.position.y = -2 + Math.cos(t * 0.6) * 0.4;
+
+    tor.rotation.x = t * 0.35;
+    tor.rotation.y = t * 0.5;
+    tor.position.x = -3 + Math.sin(t * 0.3) * 0.5;
+
+    dod.rotation.y = t * 0.3;
+    dod.rotation.z = t * 0.2;
+    dod.position.y = -3 + Math.sin(t * 0.4) * 0.3;
+
+    // Shape group follows mouse slightly
+    shapeGroup.rotation.y += (targetRotY * 0.3 - shapeGroup.rotation.y) * 0.02;
+    shapeGroup.rotation.x += (targetRotX * 0.2 - shapeGroup.rotation.x) * 0.02;
 
     renderer.render(scene, camera);
   }
@@ -205,10 +262,10 @@ function initTypingEffect() {
   if (!el) return;
 
   const words = [
-    'Data Analyst',
+    'Data Scientist',
+    'ML Engineer',
     'AI Developer',
     'Python Enthusiast',
-    'ML Engineer',
     'Power BI Expert',
     'Problem Solver',
   ];
@@ -216,22 +273,20 @@ function initTypingEffect() {
   let wordIdx  = 0;
   let charIdx  = 0;
   let deleting = false;
-  const SPEED_TYPE   = 80;   // ms per character while typing
-  const SPEED_DELETE = 45;   // ms per character while deleting
-  const PAUSE_WORD   = 1800; // pause after full word
+  const SPEED_TYPE   = 80;
+  const SPEED_DELETE = 45;
+  const PAUSE_WORD   = 1800;
 
   function tick() {
     const current = words[wordIdx];
 
     if (!deleting) {
-      // Type
       el.textContent = current.slice(0, ++charIdx);
       if (charIdx === current.length) {
         deleting = true;
         return setTimeout(tick, PAUSE_WORD);
       }
     } else {
-      // Delete
       el.textContent = current.slice(0, --charIdx);
       if (charIdx === 0) {
         deleting = false;
@@ -266,11 +321,9 @@ function initNavbar() {
   const sections = document.querySelectorAll('section[id]');
 
   function onScroll() {
-    // Scrolled class for glass background
     if (window.scrollY > 50) { navbar.classList.add('scrolled'); }
     else                      { navbar.classList.remove('scrolled'); }
 
-    // Active link highlight
     let current = '';
     sections.forEach(s => {
       if (window.scrollY >= s.offsetTop - 120) current = s.id;
@@ -297,7 +350,6 @@ function initHamburger() {
     links.classList.toggle('open');
   });
 
-  // Close menu when a link is clicked
   links.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       btn.classList.remove('open');
@@ -314,7 +366,6 @@ function initThemeToggle() {
   const icon = document.getElementById('theme-icon');
   const root = document.documentElement;
 
-  // Load saved preference
   const saved = localStorage.getItem('theme') || 'dark';
   root.setAttribute('data-theme', saved);
   updateIcon(saved);
@@ -358,9 +409,8 @@ function initSkillBars() {
    ============================================================ */
 function initRingCharts() {
   const rings = document.querySelectorAll('.ring-fill');
-  const circumference = 2 * Math.PI * 50; // r=50 → 314.16
+  const circumference = 2 * Math.PI * 50;
 
-  // Set initial state
   rings.forEach(ring => {
     ring.style.strokeDasharray  = circumference;
     ring.style.strokeDashoffset = circumference;
@@ -381,7 +431,79 @@ function initRingCharts() {
 }
 
 /* ============================================================
-   11. CONTACT FORM
+   11. STAT COUNTER ANIMATION
+   ============================================================ */
+function initStatCounters() {
+  const statNumbers = document.querySelectorAll('.stat-number[data-count]');
+  if (!statNumbers.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseFloat(el.dataset.count);
+        const isFloat = target % 1 !== 0;
+        const duration = 1500;
+        const startTime = performance.now();
+
+        function updateCount(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = target * eased;
+
+          if (isFloat) {
+            el.textContent = current.toFixed(1);
+          } else {
+            el.textContent = Math.round(current);
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            el.textContent = isFloat ? target.toFixed(1) : target;
+            // Add a "+" suffix for integers
+            if (!isFloat && target > 1) el.textContent = target + '+';
+          }
+        }
+        requestAnimationFrame(updateCount);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statNumbers.forEach(el => observer.observe(el));
+}
+
+/* ============================================================
+   12. 3D TILT CARD EFFECT
+   ============================================================ */
+function init3DTiltCards() {
+  const cards = document.querySelectorAll('.project-card, .cert-card, .stat-card, .contact-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+/* ============================================================
+   13. CONTACT FORM
    ============================================================ */
 function initContactForm() {
   const form    = document.getElementById('contact-form');
@@ -396,7 +518,6 @@ function initContactForm() {
 
     if (!name || !email || !message) return;
 
-    // Simulate a send (replace with actual API call / EmailJS)
     const btn = form.querySelector('button[type="submit"]');
     btn.textContent = 'Sending…';
     btn.disabled = true;
@@ -413,7 +534,7 @@ function initContactForm() {
 }
 
 /* ============================================================
-   12. BACK TO TOP BUTTON
+   14. BACK TO TOP BUTTON
    ============================================================ */
 function initBackToTop() {
   const btn = document.getElementById('back-to-top');
@@ -429,7 +550,7 @@ function initBackToTop() {
 }
 
 /* ============================================================
-   13. SMOOTH SCROLL for older browsers (polyfill)
+   15. SMOOTH SCROLL for older browsers (polyfill)
    ============================================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
